@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.WebShow">
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/swipwrefresh_id"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        >
+
+        <WebView
+            android:padding="5dp"
+            android:background="@color/background_fragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/webView_id"
+            style="Theme.AppCompat.Light.NoActionBar"
+
+            >
+
+        </WebView>
+
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+
+
+</LinearLayout>
