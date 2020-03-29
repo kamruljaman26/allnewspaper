@@ -5,16 +5,17 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
+import com.example.bdallnewspaper.admob.AdService;
+
 import java.util.ArrayList;
 
-public class ViewPager_Adapter extends FragmentPagerAdapter {
+public class ViewPagerAdapter extends FragmentPagerAdapter {
 
     private final ArrayList<Fragment> fragments = new ArrayList<>();
 
     private  final ArrayList<String> stringsFragmet = new ArrayList<>();
 
-    public ViewPager_Adapter(FragmentManager fm) {
-
+    public ViewPagerAdapter(FragmentManager fm) {
         super(fm);
     }
 
@@ -29,12 +30,8 @@ public class ViewPager_Adapter extends FragmentPagerAdapter {
     }
 
     public  void AddFragment (Fragment fragment, String title){
-
-
         fragments.add(fragment);
         stringsFragmet.add(title);
-
-
     }
 
     @Nullable

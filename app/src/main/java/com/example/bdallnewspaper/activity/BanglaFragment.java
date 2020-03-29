@@ -13,11 +13,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import android.widget.ImageView;
-
+import com.example.bdallnewspaper.admob.AdService;
 import com.example.bdallnewspaper.model.Newspaper;
 import com.example.bdallnewspaper.R;
-import com.example.bdallnewspaper.adapter.RecyelerView_Addpter;
+import com.example.bdallnewspaper.adapter.NewspaperAdapter;
 import com.example.bdallnewspaper.helper.DataPass;
 import com.example.bdallnewspaper.helper.NewsPaperDao;
 import com.example.bdallnewspaper.helper.NewsPaperDaoImplimentation;
@@ -30,16 +29,11 @@ import java.util.List;
  */
 public class BanglaFragment extends Fragment implements View.OnClickListener, DataPass {
 
-    ImageView  imageView;
-    BanglaFragment banglaFragment;
-    private RecyclerView recyclerView ;
     private List<Newspaper> fierstnewspaper;
-
 
     public BanglaFragment() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -47,19 +41,23 @@ public class BanglaFragment extends Fragment implements View.OnClickListener, Da
        //  Inflate the layout for this fragment
        View view = inflater.inflate(R.layout.fragment_bangla, container, false);
 
-        recyclerView = view.findViewById(R.id.recyclerview_id);
+        RecyclerView recyclerView = view.findViewById(R.id.recyclerview_id);
 
-        RecyelerView_Addpter recyelerView_addpter = new RecyelerView_Addpter(getContext(),fierstnewspaper);
+        //NewsPaper DAO
+        NewsPaperDao banglaNewspaper = new NewsPaperDaoImplimentation();
+        fierstnewspaper = banglaNewspaper.banglaNewspaper();
+
+        NewspaperAdapter newspaperAdapter = new NewspaperAdapter(getContext(),fierstnewspaper);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        recyelerView_addpter.setOnItemSelected(this);
-        recyclerView.setAdapter(recyelerView_addpter);
+        newspaperAdapter.setOnItemSelected(this);
+        recyclerView.setAdapter(newspaperAdapter);
 
        return view;
     }
 
     @Override
     public void onClick(View v) {
-         Intent intent = new Intent(getContext(), WebShow.class);
+         Intent intent = new Intent(getContext(), WebActivity.class);
          intent.putExtra("Url","prothomAlo");
          startActivity(intent);
     }
@@ -68,14 +66,15 @@ public class BanglaFragment extends Fragment implements View.OnClickListener, Da
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        NewsPaperDao banglaNewspaper = new NewsPaperDaoImplimentation();
-        fierstnewspaper = banglaNewspaper.banglaNewspaper();
-
     }
+
 
     @Override
     public void url(String URL) {
-        Intent intent = new Intent(getContext(), WebShow.class);
+        //Show Ads
+        AdService.adService.showInterstitialAd();
+
+        Intent intent = new Intent(getContext(), WebActivity.class);
         intent.putExtra("Url",fierstnewspaper.get(Integer.parseInt(URL)).getUrl());
         startActivity(intent);
     }

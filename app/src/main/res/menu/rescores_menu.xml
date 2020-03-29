@@ -3,7 +3,7 @@
 
     <item android:id="@+id/rate_app_id"
         android:checkable="true"
-        android:title="Rate App"
+        android:title="রেট দিন"
          android:icon="@drawable/ic_rate_review_white_24dp"
 
         >
@@ -12,7 +12,7 @@
 
     <item android:id="@+id/share_app_id"
         android:checkable="true"
-        android:title="Share App"
+        android:title="শেয়ার দিন"
         android:icon="@drawable/ic_share_white_24dp"
 
         >

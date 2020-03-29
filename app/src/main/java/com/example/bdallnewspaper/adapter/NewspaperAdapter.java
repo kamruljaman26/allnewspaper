@@ -16,7 +16,7 @@ import com.example.bdallnewspaper.helper.DataPass;
 import java.util.List;
 
 
-public class RecyelerView_Addpter extends RecyclerView.Adapter<RecyelerView_Addpter.MyViewHolder> {
+public class NewspaperAdapter extends RecyclerView.Adapter<NewspaperAdapter.MyViewHolder> {
 
     Context context ;
     List<Newspaper> mData;
@@ -27,7 +27,7 @@ public class RecyelerView_Addpter extends RecyclerView.Adapter<RecyelerView_Addp
 
     private Object Log;
 
-    public RecyelerView_Addpter(Context context, List<Newspaper> mData) {
+    public NewspaperAdapter(Context context, List<Newspaper> mData) {
         this.context = context;
         this.mData = mData;
     }

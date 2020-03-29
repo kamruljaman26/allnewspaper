@@ -15,7 +15,7 @@
 
         />
     <com.google.android.material.navigation.NavigationView
-        android:background="@color/background_fragment"
+        android:background="@color/drawer_fragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/navigation_view_id"

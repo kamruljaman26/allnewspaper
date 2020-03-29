@@ -2,7 +2,6 @@ package com.example.bdallnewspaper.helper;
 
 import com.example.bdallnewspaper.model.Newspaper;
 import com.example.bdallnewspaper.R;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,6 +9,7 @@ public class NewsPaperDaoImplimentation implements NewsPaperDao {
 
     @Override
     public List<Newspaper> banglaNewspaper() {
+
         List<Newspaper> fierstnewspaper = new ArrayList<>();
 
         fierstnewspaper.add(new Newspaper(R.drawable.prothom_alo,"https://www.prothomalo.com/"));
@@ -30,7 +30,9 @@ public class NewsPaperDaoImplimentation implements NewsPaperDao {
         fierstnewspaper.add(new Newspaper(R.drawable.vorerkagoj,"http://www.bhorerkagoj.com/"));
         fierstnewspaper.add(new Newspaper(R.drawable.vorerpata,"https://dailyvorerpata.com/"));
         fierstnewspaper.add(new Newspaper(R.drawable.amadershomoy,"http://www.dainikamadershomoy.com/"));
+
         return fierstnewspaper;
+
     }
 
     @Override

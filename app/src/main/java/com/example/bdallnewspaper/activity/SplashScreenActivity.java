@@ -6,8 +6,9 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.bdallnewspaper.R;
+import com.example.bdallnewspaper.admob.AdService;
 
-public class SplashScreen extends AppCompatActivity {
+public class SplashScreenActivity extends AppCompatActivity {
 
 
     public Thread thread;
@@ -16,6 +17,9 @@ public class SplashScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
+
+        //Ads Services
+        AdService.adService = new AdService(SplashScreenActivity.this);
 
         thread = new Thread(new Runnable() {
             @Override
@@ -31,7 +35,7 @@ public class SplashScreen extends AppCompatActivity {
 
     public void doWork(){
         try {
-            thread.sleep(500);
+            Thread.sleep(500);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -39,8 +43,8 @@ public class SplashScreen extends AppCompatActivity {
 
     public  void startApp (){
         try {
-            thread.sleep(3000);
-            Intent intent = new Intent (SplashScreen.this, MainActivity.class);
+            Thread.sleep(3000);
+            Intent intent = new Intent (SplashScreenActivity.this, MainActivity.class);
             startActivity(intent);
             finish();
         } catch (InterruptedException e) {

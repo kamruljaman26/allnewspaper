@@ -29,4 +29,10 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="coloredbutton"
+        parent="Widget.AppCompat.Button.Colored">
+        <item name="android:colorButtonNormal">@color/colorAccent</item>
+        <item name="android:colorControlHighlight">#ffffff</item>
+    </style>
+
 </resources>

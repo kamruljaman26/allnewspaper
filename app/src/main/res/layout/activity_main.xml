@@ -7,48 +7,60 @@
     tools:context=".activity.MainActivity">
 
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
 
-        >
-        <include
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            layout="@layout/toolbar"
-
+            android:id="@+id/app_bar_layout"
             >
+            <include
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                layout="@layout/toolbar"
+
+                >
 
 
-        </include>
+            </include>
 
-        <com.google.android.material.tabs.TabLayout
+            <com.google.android.material.tabs.TabLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tablayout_id"
+                app:tabIndicatorColor="@color/colorPrimaryDark"
+                app:tabTextColor="#8B8B8B"
+                app:tabBackground="@color/White"
+                app:tabSelectedTextColor="@color/colorPrimary"
+                app:tabIndicatorHeight="1dp"
+                app:tabMode="fixed"
+                app:tabGravity="fill"
+                >
+
+
+            </com.google.android.material.tabs.TabLayout>
+
+
+        </com.google.android.material.appbar.AppBarLayout>
+        <androidx.viewpager.widget.ViewPager
+            android:layout_below="@id/app_bar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/viewPager_id"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+            android:layout_above="@id/banner_ad_container"
+            >
+        </androidx.viewpager.widget.ViewPager>
+        <LinearLayout
+            android:id="@+id/banner_ad_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/tablayout_id"
-            app:tabIndicatorColor="#FFF"
-            app:tabTextColor="#FFF"
-            app:tabSelectedTextColor="#FFF"
-            app:tabIndicatorHeight="1dp"
-            app:tabMode="fixed"
-            app:tabGravity="fill"
-
-            >
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical" />
+    </RelativeLayout>
 
 
-        </com.google.android.material.tabs.TabLayout>
-
-
-    </com.google.android.material.appbar.AppBarLayout>
-
-
-    <androidx.viewpager.widget.ViewPager
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/viewPager_id"
-        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
-        >
-
-    </androidx.viewpager.widget.ViewPager>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

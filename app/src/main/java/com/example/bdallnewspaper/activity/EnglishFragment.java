@@ -13,9 +13,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.bdallnewspaper.admob.AdService;
 import com.example.bdallnewspaper.model.Newspaper;
 import com.example.bdallnewspaper.R;
-import com.example.bdallnewspaper.adapter.RecyelerView_Addpter;
+import com.example.bdallnewspaper.adapter.NewspaperAdapter;
 import com.example.bdallnewspaper.helper.DataPass;
 import com.example.bdallnewspaper.helper.NewsPaperDao;
 import com.example.bdallnewspaper.helper.NewsPaperDaoImplimentation;
@@ -26,13 +27,13 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class English extends Fragment implements View.OnClickListener, DataPass {
+public class EnglishFragment extends Fragment implements View.OnClickListener, DataPass {
 
    BanglaFragment banglaFragment ;
     private RecyclerView recyclerView;
     private List<Newspaper> fierstnewspaper;
 
-    public English() {
+    public EnglishFragment() {
         // Required empty public constructor
     }
 
@@ -44,10 +45,10 @@ public class English extends Fragment implements View.OnClickListener, DataPass 
         View view = inflater.inflate(R.layout.fragment_english, container, false);
         recyclerView = view.findViewById(R.id.recyclerview_id);
 
-        RecyelerView_Addpter recyelerView_addpter = new RecyelerView_Addpter(getContext(),fierstnewspaper);
+        NewspaperAdapter newspaperAdapter = new NewspaperAdapter(getContext(),fierstnewspaper);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        recyelerView_addpter.setOnItemSelected(this);
-        recyclerView.setAdapter(recyelerView_addpter);
+        newspaperAdapter.setOnItemSelected(this);
+        recyclerView.setAdapter(newspaperAdapter);
 
         return view;
     }
@@ -55,7 +56,7 @@ public class English extends Fragment implements View.OnClickListener, DataPass 
     @Override
     public void onClick(View v) {
 
-        Intent intent = new Intent(getContext(), WebShow.class);
+        Intent intent = new Intent(getContext(), WebActivity.class);
         intent.putExtra("Url","dailystar");
         startActivity(intent);
 
@@ -73,9 +74,11 @@ public class English extends Fragment implements View.OnClickListener, DataPass 
 
     @Override
     public void url(String url) {
-        Intent intent = new Intent(getContext(), WebShow.class);
+        //Show Ads
+        AdService.adService.showInterstitialAd();
+
+        Intent intent = new Intent(getContext(), WebActivity.class);
         intent.putExtra("Url",fierstnewspaper.get(Integer.parseInt(url)).getUrl());
         startActivity(intent);
-
     }
 }
